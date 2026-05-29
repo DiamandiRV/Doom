@@ -366,7 +366,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: d382a6c9c73cb6a45a7e7914fa8134aa, type: 3}
     m_FontSize: 66
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 69
     m_Alignment: 4
@@ -1483,6 +1483,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   gunPosition: {fileID: 370581563}
+  inputManager: {fileID: 398546383}
+  ammoText: {fileID: 39089105}
   onGunGrabbed:
     m_PersistentCalls:
       m_Calls:

@@ -7,7 +7,7 @@ public class GunData : ScriptableObject
     public float fireRate;
     public int totalBullets;
     public float reloadTime;
-    public int cartidgeSize;
+    public int cartridgeSize;
     public GunType gunType;
 
 }

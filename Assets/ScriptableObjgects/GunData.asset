@@ -16,5 +16,5 @@ MonoBehaviour:
   fireRate: 20
   totalBullets: 40
   reloadTime: 2
-  cartidgeSize: 10
+  cartridgeSize: 10
   gunType: 1
