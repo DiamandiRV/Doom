@@ -9,6 +9,9 @@ public class GunData : ScriptableObject
     public float reloadTime;
     public int cartridgeSize;
     public GunType gunType;
+    public string shootSoundName;
+    public string reloadSoundName;
+    public string dropSoundName;
 
 }
 
