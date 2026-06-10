@@ -1,11 +1,18 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 public class scenecontroller : MonoBehaviour
 {
     [SerializeField]
 
     private Animator fade;
+     [SerializeField]
+     private UnityEvent onSceneStart;
+     private void Start()
+    {
+        onSceneStart?.Invoke();
+    }
 
     public void LoadScene(string sceneName)
     {
