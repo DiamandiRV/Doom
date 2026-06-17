@@ -1,33 +1,28 @@
 using UnityEngine;
 using System.Collections;
 
-public class EnemyFollow : MonoBehaviour
+public class EnemyFollow : Enemy
 {
     [SerializeField]
     private float speed = 3f;
     [SerializeField]
     private float yPosition = 2f;
     [SerializeField]
-    private float damage = 20f;
-    [SerializeField]
     private float pushForce = 5f;
     private bool isFollowing = true;
-    private Transform player;
-    private Animator animator;
-    private void Start()
+    public override void OnEnable()
     {
-        animator = GetComponent<Animator>();
-        GetComponent<Health>().InitializeHealth();
+        base.OnEnable();
+        animator.Play("appear" , 0, 0f);
+        isFollowing = true;
+        SoundManager.instance.Play("cacodemon_appear");
     }
-    private void OnEnable() 
+    public override void TakeDamage()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
-    public void TakeDamage()
-    {
+        SoundManager.instance.Play("cacodemon_damage");
         if (!isFollowing) return;
         isFollowing = false;
-        animator.Play("Damage", 0, 0f);
+        base.TakeDamage();
         StartCoroutine(StopAndFollow());
     }
     private IEnumerator StopAndFollow()
@@ -36,13 +31,11 @@ public class EnemyFollow : MonoBehaviour
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         isFollowing = true;
     }
-    public void Die()
+    public override void Die()
     {
-        StopAllCoroutines();
-        GetComponent<Collider>().enabled = false;
+        SoundManager.instance.Play("cacodemon_die");
         isFollowing = false;
-        animator.Play("Death", 0, 0f);
-        StartCoroutine(DieCoroutine());
+        base.Die();
     }
     private IEnumerator DieCoroutine()
     {
@@ -54,8 +47,7 @@ public class EnemyFollow : MonoBehaviour
     {
      if (!isFollowing) return;
      Vector3 targetPosition = new Vector3(player.position.x, yPosition, player.position.z);
-     transform.position = Vector3.MoveTowards(transform.position,
-     targetPosition, speed * Time.deltaTime);
+     transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
      transform.LookAt(targetPosition);   
     }
     private void OnCollisionEnter(Collision collision)
