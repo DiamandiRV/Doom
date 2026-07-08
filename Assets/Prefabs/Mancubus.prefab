@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTank
   animator: {fileID: 8403391217252063581}
-  damage: 20
+  damage: 40
   range: 6
   fireRate: 4
   shootPivot: {fileID: 2352128169244715771}
@@ -326,6 +326,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onHeal:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3208713364396857289
 GameObject:
   m_ObjectHideFlags: 0

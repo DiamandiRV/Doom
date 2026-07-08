@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System.Collections;
 
 public class Gun : MonoBehaviour
 {
@@ -41,9 +42,27 @@ public class Gun : MonoBehaviour
     {
         if (totalBullets <= 0 || cartridgeBullets == gunData.cartridgeSize) return;
         SoundManager.instance.Play(gunData.reloadSoundName);
+        if (playAnimation)
+        {
+            StartCoroutine(ChargeGunCoroutine());
+        }
+        else
+        {
+            AddBullets();
+        }
+        
+    }
+    private IEnumerator ChargeGunCoroutine()
+    {
+        animator.Play("Charge", 0, 0f);
+        yield return null;
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        AddBullets();
+    }
+    private void AddBullets()
+    {
         cartridgeBullets = Mathf.Min(gunData.cartridgeSize, totalBullets);
         totalBullets -= cartridgeBullets;
-        if (playAnimation) animator.Play("Charge", 0, 0f);
         UpdateAmmoText();
     }
     private void UpdateAmmoText()
