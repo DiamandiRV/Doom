@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d80bf701ab39bee44a5c20bc5b1d024f, type: 3}
   m_Name: GunData 2
   m_EditorClassIdentifier: Assembly-CSharp::GunData
-  damage: 30
+  damage: 100
   fireRate: 20
-  totalBullets: 15
+  totalBullets: 1
   reloadTime: 2
   cartridgeSize: 10
   gunType: 1
-  shootSoundName: shoot
+  shootSoundName: ShootGun
   reloadSoundName: reload
   dropSoundName: drop_gun
