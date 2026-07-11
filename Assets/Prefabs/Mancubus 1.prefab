@@ -111,7 +111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.018, y: 3.675}
+  m_AnchoredPosition: {x: 0.018, y: 2.42}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4304982834739474869
@@ -228,12 +228,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTank
   animator: {fileID: 2801435201817064339}
-  damage: 40
+  damage: 20
   range: 6
-  fireRate: 4
+  fireRate: 3
   shootPivot: {fileID: 6382396758152624601}
   bulletPrefab: {fileID: 4962135838434710287, guid: 1992ad37264fcc4428303493e0ab8227, type: 3}
-  speed: 20
+  speed: 8
 --- !u!65 &54032228077624526
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -440,7 +440,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -90.8}
+  m_AnchoredPosition: {x: 0, y: 2.7}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1655657395265844909
@@ -666,7 +666,7 @@ Transform:
   m_GameObject: {fileID: 8982629344687865140}
   serializedVersion: 2
   m_LocalRotation: {x: 0.49034667, y: 0.49049118, z: -0.5093253, w: -0.50947654}
-  m_LocalPosition: {x: -0.0416, y: 0.0789, z: -0.0023}
+  m_LocalPosition: {x: -0.0379, y: 0.0965, z: 0.0035}
   m_LocalScale: {x: 0.09830631, y: 0.098306306, z: 0.09830628}
   m_ConstrainProportionsScale: 0
   m_Children: []
