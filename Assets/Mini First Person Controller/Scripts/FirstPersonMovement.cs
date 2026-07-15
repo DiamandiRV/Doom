@@ -14,6 +14,15 @@ public class FirstPersonMovement : MonoBehaviour
     Rigidbody rigidbody;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
+    private Vector3 KnockbackVelocity = Vector3.zero;
+    [SerializeField]
+    private float KnockbackDamping = 8f;
+    public void AddKonckback(Vector3 direction, float force)
+    {
+        direction.y = 0f;
+        direction.Normalize();
+        KnockbackVelocity += direction * force;
+    }
 
 
 
@@ -34,11 +43,11 @@ public class FirstPersonMovement : MonoBehaviour
         {
             targetMovingSpeed = speedOverrides[speedOverrides.Count - 1]();
         }
-
-        // Get targetVelocity from input.
-        Vector2 targetVelocity =new Vector2( Input.GetAxis("Horizontal") * targetMovingSpeed, Input.GetAxis("Vertical") * targetMovingSpeed);
-
-        // Apply movement.
-        rigidbody.linearVelocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.linearVelocity.y, targetVelocity.y);
+        Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        Vector3 movementVelocity = transform.rotation * new Vector3 (input.x, 0, input.y) * targetMovingSpeed;
+        Vector3 finalVelocity = movementVelocity + KnockbackVelocity;
+        finalVelocity.y = rigidbody.linearVelocity.y;
+        rigidbody.linearVelocity = finalVelocity;
+        KnockbackVelocity = Vector3.Lerp(KnockbackVelocity, Vector3.zero, KnockbackDamping + Time.fixedDeltaTime);
     }
 }
