@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 947871570905150228}
   - component: {fileID: 4275861580430029498}
   - component: {fileID: 4860076715064499180}
+  - component: {fileID: 2889905572588557543}
   m_Layer: 0
   m_Name: Sniper
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,12 +52,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySniper
   animator: {fileID: 4804655506715891391}
-  damage: 50
+  damage: 40
   range: 10
   fireRate: 3
   aimTime: 4
   timerText: {fileID: 5278586093745536981}
-  laserBeam: {fileID: 6075665259467854459}
+  laserBeam: {fileID: 2889905572588557543}
 --- !u!114 &947871570905150228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,8 +112,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.7188089, y: 2.1074827, z: 0.6726732}
-  m_Center: {x: -0.0003336668, y: 1.1198651, z: -0.064828396}
+  m_Size: {x: 0.9767549, y: 2.1074827, z: 0.6726732}
+  m_Center: {x: 0.0024160296, y: 1.1198651, z: -0.064828396}
 --- !u!54 &4860076715064499180
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -140,6 +141,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2889905572588557543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836179904654419902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdf622ea87393974593dbc3a1c81665d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LaserBeam
+  startPoint: {fileID: 1181744962807274748}
+  laserMesh: {fileID: 3237016203260330891}
+  radius: 0.03
 --- !u!1 &2120056734360077740
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +516,6 @@ GameObject:
   - component: {fileID: 3237016203260330891}
   - component: {fileID: 6609720421805775686}
   - component: {fileID: 7190343279512052916}
-  - component: {fileID: 6075665259467854459}
   m_Layer: 0
   m_Name: EnemyLaser
   m_TagString: Untagged
@@ -517,7 +532,7 @@ Transform:
   m_GameObject: {fileID: 4728967917538854427}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.176, y: 1.926, z: 0.47999954}
+  m_LocalPosition: {x: 0.176, y: 1.926, z: -0.385}
   m_LocalScale: {x: 0.0894737, y: 0.0894737, z: 0.0894737}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -580,22 +595,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6075665259467854459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4728967917538854427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdf622ea87393974593dbc3a1c81665d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LaserBeam
-  startPoint: {fileID: 1181744962807274748}
-  target: {fileID: 0}
-  laserMesh: {fileID: 3237016203260330891}
-  radius: 0.1
 --- !u!1 &5199925063214873735
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,7 +696,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6230887512158013970}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.016819999, y: 0.01682, z: 0.016819999}
   m_ConstrainProportionsScale: 1
@@ -705,7 +704,7 @@ RectTransform:
   - {fileID: 1801790710427765078}
   - {fileID: 2368690534265314822}
   m_Father: {fileID: 6771335446276636301}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 2.323}
@@ -937,7 +936,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2a7da33916c0aef4ab62b31671e76742, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2a7da33916c0aef4ab62b31671e76742, type: 3}
       propertyPath: m_LocalRotation.x
@@ -945,7 +944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2a7da33916c0aef4ab62b31671e76742, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2a7da33916c0aef4ab62b31671e76742, type: 3}
       propertyPath: m_LocalRotation.z
@@ -957,7 +956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2a7da33916c0aef4ab62b31671e76742, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2a7da33916c0aef4ab62b31671e76742, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
