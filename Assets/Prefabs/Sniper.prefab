@@ -156,6 +156,7 @@ MonoBehaviour:
   startPoint: {fileID: 1181744962807274748}
   laserMesh: {fileID: 3237016203260330891}
   radius: 0.03
+  targetOffset: {x: 0, y: 1.2, z: 0}
 --- !u!1 &2120056734360077740
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,8 +353,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.36, y: 19.93}
-  m_SizeDelta: {x: 28.3, y: 30}
+  m_AnchoredPosition: {x: 4.1, y: 19.93}
+  m_SizeDelta: {x: 58.4, y: 73.64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &585170138852951976
 CanvasRenderer:
@@ -385,11 +386,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d382a6c9c73cb6a45a7e7914fa8134aa, type: 3}
-    m_FontSize: 23
+    m_FontSize: 49
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 60
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -901,7 +902,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -47.612
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8887797427382937824, guid: 76d5a6f03192e844fa4552fa31a177a1, type: 3}
+    - {fileID: 7067456419238729418, guid: 76d5a6f03192e844fa4552fa31a177a1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3183483207014662542, guid: 76d5a6f03192e844fa4552fa31a177a1, type: 3}
