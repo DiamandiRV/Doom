@@ -15,6 +15,8 @@ public class Gun : MonoBehaviour
     private Transform bulletPivot;
     [SerializeField]
     private GameObject bulletPrefab;
+    [SerializeField]
+    private GameObject fireParticlesPrefab;
     private Text ammoText;
     private float nextFireTime;
     private int totalBullets;
@@ -78,6 +80,7 @@ public class Gun : MonoBehaviour
     }
     public void Shoot()
     {
+        PoolManager.Instance.GetObject(fireParticlesPrefab, bulletPivot.position);
         float rayDistance = 1000f;
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         Vector3 targetPoint;

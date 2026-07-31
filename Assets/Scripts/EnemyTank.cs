@@ -12,6 +12,8 @@ public class EnemyTank : Enemy
     [SerializeField]
     private GameObject bulletPrefab;
     [SerializeField]
+    private GameObject fireParticlesPrefab;
+    [SerializeField]
     private float speed = 10f;
     private bool isShooting = false;
     private float nextFireTime = 0f;
@@ -58,6 +60,7 @@ public class EnemyTank : Enemy
         yield return null;
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         SoundManager.instance.Play("MancubusGun");
+        PoolManager.Instance.GetObject(fireParticlesPrefab, shootPivot.position);
         animator.Play("Shoot" , 0, 0f);
         Vector3 direction = (player.transform.position - shootPivot.position).normalized;
         shootPivot.forward = direction;

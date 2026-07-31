@@ -88,6 +88,7 @@ MonoBehaviour:
   gunData: {fileID: 11400000, guid: 1f69fc947014d774fb442c0a89209a20, type: 2}
   bulletPivot: {fileID: 1389069981569521251}
   bulletPrefab: {fileID: 4962135838434710287, guid: d1c2b6de5cdf86041adf1b6cefdb3d41, type: 3}
+  fireParticlesPrefab: {fileID: 5880797563127281583, guid: b7c86d06766ef5b48887d79dc0d1714d, type: 3}
 --- !u!1 &3670952813255969467
 GameObject:
   m_ObjectHideFlags: 0
