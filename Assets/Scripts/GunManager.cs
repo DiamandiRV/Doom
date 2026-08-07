@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.Events;
-
+ 
 public class GunManager : MonoBehaviour
 {
     [SerializeField]
@@ -14,11 +14,15 @@ public class GunManager : MonoBehaviour
     [SerializeField]
     private Text ammoText;
     [SerializeField]
+    private Image gunIcon;
+    [SerializeField]
+    private Scope scope;
+    [SerializeField]
     private InputManager inputManager;
     private Gun currentGun;
     private List<Gun> guns = new List<Gun>();
     private int currentGunIndex = 0;
-    private void Awake() 
+    private void Awake()
     {
         onGunDropped?.Invoke();
     }
@@ -40,8 +44,10 @@ public class GunManager : MonoBehaviour
         currentGun = gun;
         currentGun.GrabGun(gunPosition, ammoText);
         currentGun.OnGunEmpty.AddListener(DropGun);
+        currentGun.OnGunShoot.AddListener(scope.PlayFireAnimation);
         onGunGrabbed?.Invoke();
-        currentGunIndex = guns.IndexOf(currentGun); 
+        currentGunIndex = guns.IndexOf(currentGun);
+        SetIcon(currentGun.GunData.sprite);
     }
     public void SwitchUpGun()
     {
@@ -65,9 +71,20 @@ public class GunManager : MonoBehaviour
     {
         if(guns.Count <= 1) return;
         currentGun.gameObject.SetActive(false);
+        gunIcon.sprite = currentGun.GunData.sprite;
+        SetGun();
+    }
+    public void SetGun()
+    {
         currentGun = guns[currentGunIndex];
         currentGun.gameObject.SetActive(true);
         currentGun.GrabGun(gunPosition, ammoText, false);
+        SetIcon(currentGun.GunData.sprite);
+    }
+    public void SetIcon(Sprite sprite)
+    {
+        gunIcon.sprite = sprite;
+        gunIcon.SetNativeSize();
     }
     public void DropAllGuns()
     {
@@ -82,14 +99,13 @@ public class GunManager : MonoBehaviour
     public void DropGun()
     {
         currentGun.OnGunEmpty.RemoveListener(DropGun);
+        currentGun.OnGunShoot.RemoveListener(scope.PlayFireAnimation);
         guns.Remove(currentGun);
         Destroy(currentGun.gameObject);
         if(guns.Count > 0)
         {
             currentGunIndex = guns.Count - 1;
-            currentGun = guns[currentGunIndex];
-            currentGun.gameObject.SetActive(true);
-            currentGun.GrabGun(gunPosition, ammoText, false);
+            SetGun();
         }
         else
         {
@@ -97,13 +113,21 @@ public class GunManager : MonoBehaviour
             currentGun = null;
         }
     }
-    private void Update() 
+    private void Update()
     {
      if (currentGun == null) return;
      currentGun.HandleFire(inputManager.LeftButtonPressed, inputManager.LeftButtonHeld);
      if (inputManager.RightButtonPressed)
         {
             currentGun.ChargeGun();
-        }   
+        }
+        if (currentGun.IsAimingEnemy())
+        {
+            scope.ChangeToAimingColor();
+        }
+        else
+        {
+            scope.ChangeToIdleColor();
+        }
     }
 }
